@@ -1,0 +1,6 @@
+function [er, bad, A] = nntest(nn, x, y)
+    [labels,A] = nnpredict(nn, x);
+    [dummy, expected] = max(y,[],2);
+    bad = find(labels ~= expected);    
+    er = numel(bad) / size(x, 1);
+end
